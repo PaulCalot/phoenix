@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "phoenix"
+version = "2024.05.02"
+description = ""
+authors = ["Paul Calot"]
+
+packages = [
+    { include = "simulation", from = "src" },
+]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+numpy = "^1.26.4"
+# python-dotenv = "*"
+
+# [tool.poetry.group.dev.dependencies]
+
+[build-system]
+requires = ["poetry-core","wheel"]
+build-backend = "poetry.core.masonry.api" 
