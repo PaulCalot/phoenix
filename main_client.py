@@ -1,4 +1,5 @@
 import logging
+import socket
 import time
 from visualization import connection
 
@@ -30,6 +31,7 @@ def main(logger):
     except KeyboardInterrupt:
         print("Visualization stopped by user.")
     finally:
+        viz_socket.shutdown(how=socket.SHUT_RDWR)
         viz_socket.close()
 
 if __name__ == "__main__":
