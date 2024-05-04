@@ -17,6 +17,16 @@ class StructureOfArrays:
         self._data = np.empty(shape=(self._init_size, self._state_size))
         self._end = 0
 
+    def get_states(self):
+        return self._data[:self._end]
+
+    def update_states(self, new_states: np.ndarray):
+        new_length = len(new_states)
+        while(new_length > self._current_size):
+            self._increase_size()
+        self._data[:new_length] = new_states
+        self._state_size = new_length
+
     def _increase_size(self):
         self._data = np.concatenate(
             (self._data, np.empty(shape=(self._current_size, self._state_size))),
@@ -25,14 +35,14 @@ class StructureOfArrays:
 
     def add(self,
             state: np.ndarray):
-        if self._end + 1 == self.current_size:
+        if self._end + 1 == self._current_size:
             self._increase_size()
         self._data[self._end, :] = state[:]
         self._end += 1
 
     def pop(self, index: int):
         # TODO:: add decrease of the size
-        self._data[index, :] = state[self._end, : ]
+        self._data[index, :] = self._data[self._end, : ]
         self._end -= 1
 
     def __add__(self, other: np.ndarray):
