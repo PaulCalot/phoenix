@@ -74,5 +74,8 @@ class VisualizationSocket:
             bytes_recd = bytes_recd + len(chunk)
         return ''.join([chunk.decode('utf-8') for chunk in chunks])
 
+    def shutdown(self, how: int):
+        self.sock.shutdown(how)
+
     def close(self):
         self.sock.close()
