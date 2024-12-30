@@ -28,3 +28,20 @@ Implementation :
 The visualisation will handle the realistic display such that it does not depend on the framerate.
 
 The simulation is developped as a package.
+
+## Communication
+RTS : real time system
+GO server, nvim client
+no websocket, no http => tcp connection entre les 2
+Partial frame ? (update uniquement)
+=> je me dois de faire les tests aussi que ce soit propre ! 
+
+Intéressant pour comprendre les sockets : [ici, python](https://docs.python.org/2/howto/sockets.html)
+Ce que je souhaite en réalité :
+IPC socket (inter-process communication socket)
+
+Question : comment faire cela au mieux ? 2 choix.
+- soit je le fais en local, avec mémoire partagée, mais plus compliqué, moins intéressant
+- soit je le fais via socket en bindant sur localhost dans un premier temps au moins => avec des sockets, c'est ce que je vais faire.
+
+A voir comment je peux faire pour assurer que c'est bien le même processus qui reçoit et plot tout ce qu'il faut.
